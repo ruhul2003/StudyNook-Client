@@ -16,7 +16,7 @@ export default function NotFound() {
         <div className="space-y-2">
           <h1 className="text-4xl font-black text-white">404 - Page Not Found</h1>
           <p className="text-slate-400 max-w-sm mx-auto text-sm sm:text-base">
-            Oops! The page you are looking for does not exist or has been relocated.
+            Oops! The page you are looking for does not exist or has been removed.
           </p>
         </div>
         <div>
