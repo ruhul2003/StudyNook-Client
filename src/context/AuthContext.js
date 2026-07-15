@@ -51,10 +51,10 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const loginWithGoogle = async (name, email, photoUrl) => {
+  const loginWithGoogle = async (token) => {
     setLoading(true);
     try {
-      const res = await api.post('/api/auth/google', { name, email, photoUrl });
+      const res = await api.post('/api/auth/google', { token });
       setUser(res.data);
       return { success: true };
     } catch (err) {
