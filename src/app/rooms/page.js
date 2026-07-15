@@ -16,6 +16,17 @@ const AMENITY_OPTIONS = [
   'Air Conditioning',
 ];
 
+const FLOOR_OPTIONS = [
+  { label: 'All Floors', value: '' },
+  { label: '1st Floor', value: '1st Floor' },
+  { label: '2nd Floor', value: '2nd Floor' },
+  { label: '3rd Floor', value: '3rd Floor' },
+  { label: 'Floor 1', value: 'Floor 1' },
+  { label: 'Floor 2', value: 'Floor 2' },
+  { label: 'Floor 3', value: 'Floor 3' },
+  { label: 'Floor 4', value: 'Floor 4' },
+];
+
 export default function Rooms() {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +35,7 @@ export default function Rooms() {
   const [maxRate, setMaxRate] = useState('');
   const [floor, setFloor] = useState('');
   const [selectedAmenities, setSelectedAmenities] = useState([]);
-  const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const [budgetPreset, setBudgetPreset] = useState(''); // '', 'under-10', '10-20', '20-plus'
 
   const fetchRooms = async () => {
     setLoading(true);
@@ -48,7 +59,6 @@ export default function Rooms() {
   };
 
   useEffect(() => {
-    // Debounced search / fetching
     const delayDebounce = setTimeout(() => {
       fetchRooms();
     }, 400);
@@ -64,206 +74,220 @@ export default function Rooms() {
     }
   };
 
+  const handleBudgetPreset = (preset) => {
+    setBudgetPreset(preset);
+    if (preset === 'under-10') {
+      setMinRate('');
+      setMaxRate('10');
+    } else if (preset === '10-20') {
+      setMinRate('10');
+      setMaxRate('20');
+    } else if (preset === '20-plus') {
+      setMinRate('20');
+      setMaxRate('');
+    } else {
+      setMinRate('');
+      setMaxRate('');
+    }
+  };
+
+  const handleMinRateChange = (val) => {
+    setMinRate(val);
+    setBudgetPreset('');
+  };
+
+  const handleMaxRateChange = (val) => {
+    setMaxRate(val);
+    setBudgetPreset('');
+  };
+
   const handleResetFilters = () => {
     setSearch('');
     setMinRate('');
     setMaxRate('');
     setFloor('');
     setSelectedAmenities([]);
+    setBudgetPreset('');
   };
 
   return (
     <MainLayout title="Available Rooms">
-      <div className="flex flex-col lg:flex-row gap-8 py-4">
-        
-        {/* Sidebar Filters - Desktop */}
-        <aside className="hidden lg:block w-72 bg-slate-900 border border-slate-800/80 p-6 rounded-2xl h-fit space-y-6 shrink-0 relative">
-          <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-            <span className="font-bold text-slate-100 flex items-center gap-2">
-              <Filter className="w-4 h-4 text-indigo-400" /> Filters
-            </span>
-            <button
-              onClick={handleResetFilters}
-              className="text-xs text-indigo-400 hover:text-indigo-305 flex items-center gap-1 font-semibold"
-            >
-              <RefreshCw className="w-3 h-3" /> Reset
-            </button>
-          </div>
+      <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 space-y-6">
 
-          {/* Floor filter */}
-          <div className="space-y-2">
-            <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
-              Floor
-            </label>
-            <select
-              value={floor}
-              onChange={(e) => setFloor(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-850 hover:border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition-colors"
-            >
-              <option value="">All Floors</option>
-              <option value="1st Floor">1st Floor</option>
-              <option value="2nd Floor">2nd Floor</option>
-              <option value="3rd Floor">3rd Floor</option>
-              <option value="Floor 1">Floor 1</option>
-              <option value="Floor 2">Floor 2</option>
-              <option value="Floor 3">Floor 3</option>
-              <option value="Floor 4">Floor 4</option>
-            </select>
-          </div>
-
-          {/* Rate Filter */}
-          <div className="space-y-2">
-            <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
-              Hourly Rate ($)
-            </label>
-            <div className="flex items-center gap-2">
-              <input
-                type="number"
-                placeholder="Min"
-                value={minRate}
-                onChange={(e) => setMinRate(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-850 rounded-xl px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500"
-              />
-              <span className="text-slate-500 text-xs">to</span>
-              <input
-                type="number"
-                placeholder="Max"
-                value={maxRate}
-                onChange={(e) => setMaxRate(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-850 rounded-xl px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500"
-              />
-            </div>
-          </div>
-
-          {/* Amenities Filter */}
-          <div className="space-y-2.5">
-            <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
-              Amenities
-            </label>
-            <div className="space-y-2">
-              {AMENITY_OPTIONS.map((option) => (
-                <label key={option} className="flex items-center gap-2.5 text-sm text-slate-300 hover:text-slate-200 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={selectedAmenities.includes(option)}
-                    onChange={() => handleAmenityChange(option)}
-                    className="rounded border-slate-800 text-indigo-600 bg-slate-955 focus:ring-offset-slate-900 focus:ring-indigo-550 w-4 h-4 cursor-pointer"
-                  />
-                  <span>{option}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-        </aside>
-
-        {/* Main Content Area */}
-        <div className="flex-grow space-y-6">
-          {/* Search Header Bar */}
-          <div className="flex flex-col sm:flex-row gap-4 bg-slate-900 border border-slate-800/80 p-4 rounded-2xl">
-            <div className="relative flex-grow">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
-                <Search className="w-5 h-5" />
+        {/* Top Premium Filtering Dashboard */}
+        <div className="bg-zinc-900/90 border border-zinc-800/80 rounded-2xl p-5 md:p-6 space-y-6 shadow-xl backdrop-blur-md">
+          {/* Header Line: Search & Quick Reset */}
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between pb-5 border-b border-zinc-800/60">
+            <div className="relative w-full md:max-w-md">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-500">
+                <Search className="w-4 h-4 stroke-1" />
               </div>
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-11 pr-4 block w-full bg-slate-950 border border-slate-850 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-2.5 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
-                placeholder="Search by study room name..."
+                className="pl-10 pr-4 block w-full bg-zinc-950 border border-zinc-800/85 hover:border-zinc-700/80 focus:border-indigo-500 rounded-xl py-2.5 text-zinc-100 placeholder-zinc-550 focus:outline-none text-sm transition-all focus:ring-1 focus:ring-indigo-550"
+                placeholder="Search resources by workspace title..."
               />
             </div>
-            
-            {/* Mobile Filters Toggle Button */}
-            <button
-              onClick={() => setShowMobileFilters(!showMobileFilters)}
-              className="lg:hidden flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-950 hover:bg-slate-850 border border-slate-800 rounded-xl text-sm font-semibold transition-colors"
-            >
-              <SlidersHorizontal className="w-4 h-4 text-indigo-400" />
-              Filters
-            </button>
-          </div>
 
-          {/* Mobile Filters Drawer */}
-          {showMobileFilters && (
-            <div className="lg:hidden p-5 bg-slate-900 border border-slate-800 rounded-2xl space-y-5 animate-in slide-in-from-top duration-200">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-                <span className="font-bold text-slate-150">Mobile Filters</span>
+            <div className="flex items-center justify-between md:justify-end gap-5 w-full md:w-auto">
+              <span className="text-xs font-semibold text-zinc-450 tracking-wider">
+                {rooms.length} {rooms.length === 1 ? 'workspace' : 'workspaces'} matching
+              </span>
+              {(search || floor || minRate || maxRate || selectedAmenities.length > 0) && (
                 <button
                   onClick={handleResetFilters}
-                  className="text-xs text-indigo-400 hover:underline"
+                  className="text-xs text-rose-400 hover:text-rose-350 flex items-center gap-1 font-semibold transition-colors px-3 py-2 rounded-xl bg-rose-500/5 hover:bg-rose-500/10 border border-rose-500/10"
                 >
-                  Clear All
+                  <RefreshCw className="w-3.5 h-3.5" /> Clear Filters
                 </button>
-              </div>
+              )}
+            </div>
+          </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-xs font-semibold text-slate-400">Floor</label>
-                  <select
-                    value={floor}
-                    onChange={(e) => setFloor(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-850 rounded-xl px-3 py-2 text-sm text-slate-200"
+          {/* Filtering Categories Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-1">
+
+            {/* 1. Floor Level Selector (Pill Badges) */}
+            <div className="space-y-3.5">
+              <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider block">Floor Plan</span>
+              <div className="flex flex-wrap gap-2 max-h-[140px] overflow-y-auto pr-1">
+                {FLOOR_OPTIONS.map((opt) => {
+                  const isActive = floor === opt.value;
+                  return (
+                    <button
+                      key={opt.label}
+                      onClick={() => setFloor(opt.value)}
+                      className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-all ${isActive
+                          ? 'bg-indigo-600 border-indigo-500 text-white shadow-md shadow-indigo-500/15'
+                          : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700/80 hover:text-zinc-200'
+                        }`}
+                    >
+                      {opt.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* 2. Budget Controls */}
+            <div className="space-y-3.5">
+              <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider block">Hourly Budget</span>
+              <div className="space-y-3">
+                {/* Presets */}
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => handleBudgetPreset('')}
+                    className={`px-2.5 py-1 text-xs font-medium rounded-lg border transition-all ${budgetPreset === '' && !minRate && !maxRate
+                        ? 'bg-indigo-600 border-indigo-500 text-white'
+                        : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700'
+                      }`}
                   >
-                    <option value="">All</option>
-                    <option value="1st Floor">1st Floor</option>
-                    <option value="2nd Floor">2nd Floor</option>
-                    <option value="3rd Floor">3rd Floor</option>
-                    <option value="Floor 1">Floor 1</option>
-                    <option value="Floor 2">Floor 2</option>
-                    <option value="Floor 3">Floor 3</option>
-                    <option value="Floor 4">Floor 4</option>
-                  </select>
+                    Any
+                  </button>
+                  <button
+                    onClick={() => handleBudgetPreset('under-10')}
+                    className={`px-2.5 py-1 text-xs font-medium rounded-lg border transition-all ${budgetPreset === 'under-10'
+                        ? 'bg-indigo-600 border-indigo-500 text-white'
+                        : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700'
+                      }`}
+                  >
+                    Under $10
+                  </button>
+                  <button
+                    onClick={() => handleBudgetPreset('10-20')}
+                    className={`px-2.5 py-1 text-xs font-medium rounded-lg border transition-all ${budgetPreset === '10-20'
+                        ? 'bg-indigo-600 border-indigo-500 text-white'
+                        : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700'
+                      }`}
+                  >
+                    $10 - $20
+                  </button>
+                  <button
+                    onClick={() => handleBudgetPreset('20-plus')}
+                    className={`px-2.5 py-1 text-xs font-medium rounded-lg border transition-all ${budgetPreset === '20-plus'
+                        ? 'bg-indigo-600 border-indigo-500 text-white'
+                        : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700'
+                      }`}
+                  >
+                    $20+
+                  </button>
                 </div>
 
-                <div className="space-y-1">
-                  <label className="text-xs font-semibold text-slate-400">Max Rate ($)</label>
-                  <input
-                    type="number"
-                    placeholder="Max"
-                    value={maxRate}
-                    onChange={(e) => setMaxRate(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-850 rounded-xl px-3 py-1.5 text-sm text-slate-200"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs font-semibold text-slate-400">Amenities</label>
-                <div className="grid grid-cols-2 gap-2">
-                  {AMENITY_OPTIONS.map((option) => (
-                    <label key={option} className="flex items-center gap-2 text-sm text-slate-350 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={selectedAmenities.includes(option)}
-                        onChange={() => handleAmenityChange(option)}
-                        className="rounded border-slate-800 text-indigo-650 bg-slate-955 w-4 h-4"
-                      />
-                      <span>{option}</span>
-                    </label>
-                  ))}
+                {/* Range inputs */}
+                <div className="flex items-center gap-2">
+                  <div className="relative flex-grow">
+                    <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs text-zinc-550">$</span>
+                    <input
+                      type="number"
+                      placeholder="Min"
+                      value={minRate}
+                      onChange={(e) => handleMinRateChange(e.target.value)}
+                      className="pl-6 pr-2 py-1.5 block w-full bg-zinc-950 border border-zinc-800/80 rounded-lg text-xs text-zinc-300 focus:outline-none focus:border-indigo-550"
+                    />
+                  </div>
+                  <span className="text-zinc-600 text-xs font-bold px-0.5">to</span>
+                  <div className="relative flex-grow">
+                    <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs text-zinc-555">$</span>
+                    <input
+                      type="number"
+                      placeholder="Max"
+                      value={maxRate}
+                      onChange={(e) => handleMaxRateChange(e.target.value)}
+                      className="pl-6 pr-2 py-1.5 block w-full bg-zinc-950 border border-zinc-800/80 rounded-lg text-xs text-zinc-300 focus:outline-none focus:border-indigo-550"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          )}
 
-          {/* Results Grid */}
+            {/* 3. Amenities Multi-selection (Pill Buttons) */}
+            <div className="space-y-3.5 md:col-span-2 lg:col-span-1">
+              <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider block">Amenities</span>
+              <div className="flex flex-wrap gap-2">
+                {AMENITY_OPTIONS.map((option) => {
+                  const isSelected = selectedAmenities.includes(option);
+                  return (
+                    <button
+                      key={option}
+                      onClick={() => handleAmenityChange(option)}
+                      className={`px-3.5 py-1.5 text-xs font-medium rounded-lg border transition-all ${isSelected
+                          ? 'bg-indigo-600 border-indigo-500 text-white shadow-md shadow-indigo-500/15'
+                          : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700/80'
+                        }`}
+                    >
+                      {option}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Results Section */}
+        <div className="space-y-6">
           {loading ? (
-            <Spinner />
+            <div className="flex items-center justify-center py-24">
+              <Spinner />
+            </div>
           ) : rooms.length === 0 ? (
-            <div className="text-center py-20 bg-slate-900/45 rounded-3xl border border-slate-850/80">
-              <p className="text-lg font-bold text-slate-300">No rooms found</p>
-              <p className="text-slate-450 text-sm mt-1">
-                Try adjusting your search filters or clear the keywords.
+            <div className="text-center py-20 bg-zinc-900/60 border border-zinc-800/80 rounded-2xl max-w-2xl mx-auto shadow-md">
+              <p className="text-sm font-semibold text-zinc-350">No workspaces match your parameters</p>
+              <p className="text-zinc-500 text-xs mt-1.5 px-6 max-w-md mx-auto leading-relaxed">
+                Try expanding your hourly budget scope, selecting different floor layers, or resetting active amenities to view available library rooms.
               </p>
               <button
                 onClick={handleResetFilters}
-                className="mt-4 px-4 py-2 bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500 hover:text-white border border-indigo-550/20 hover:border-transparent text-sm font-semibold rounded-xl transition-all"
+                className="mt-6 px-4.5 py-2.5 bg-zinc-800 hover:bg-zinc-750 border border-zinc-700/80 text-zinc-300 text-xs font-semibold rounded-lg transition-colors"
               >
-                Clear Search
+                Clear Selected Filters
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
               {rooms.map((room) => (
                 <RoomCard key={room._id} room={room} />
               ))}
