@@ -34,9 +34,14 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <span className="text-sm text-slate-400 cursor-not-allowed hover:text-slate-300">
-                  About Us (Coming Soon)
-                </span>
+                <Link href="/about" className="text-sm text-slate-400 hover:text-indigo-400 transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-sm text-slate-400 hover:text-indigo-400 transition-colors">
+                  Contact Us
+                </Link>
               </li>
             </ul>
           </div>

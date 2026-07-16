@@ -17,6 +17,8 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Rooms', path: '/rooms' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   const privateLinks = [
