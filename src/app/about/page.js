@@ -2,7 +2,7 @@
 
 import React from 'react';
 import MainLayout from '../../components/MainLayout';
-import { BookOpen, Users, Shield, Target, GraduationCap } from 'lucide-react';
+import { Shield, Target, GraduationCap, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function About() {
@@ -36,7 +36,7 @@ export default function About() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.12,
       },
     },
   };
@@ -61,15 +61,15 @@ export default function About() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-fuchsia-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-        <motion.div 
-          className="max-w-5xl mx-auto space-y-16 relative"
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
+        <div className="max-w-5xl mx-auto space-y-16 relative">
           
-          {/* Header section */}
-          <motion.div className="text-center space-y-4" variants={itemVariants}>
+          {/* Header section (loads immediately) */}
+          <motion.div 
+            className="text-center space-y-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-550/20">
               <GraduationCap className="w-3.5 h-3.5" /> About StudyNook
             </span>
@@ -84,15 +84,19 @@ export default function About() {
             </p>
           </motion.div>
 
-          {/* Stats section */}
+          {/* Stats section (scroll animation) */}
           <motion.div 
             className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6" 
-            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-50px' }}
+            variants={containerVariants}
           >
             {stats.map((stat, idx) => (
               <motion.div 
                 key={idx} 
                 className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 text-center backdrop-blur-sm"
+                variants={itemVariants}
                 whileHover={{ scale: 1.05, borderColor: 'rgba(99, 102, 241, 0.4)' }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
@@ -102,18 +106,30 @@ export default function About() {
             ))}
           </motion.div>
 
-          {/* Core Values grid */}
-          <motion.div className="space-y-8" variants={itemVariants}>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">
+          {/* Core Values grid (scroll animation) */}
+          <div className="space-y-8">
+            <motion.h2 
+              className="text-2xl sm:text-3xl font-bold text-white text-center"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+            >
               Why Choose StudyNook?
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            </motion.h2>
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              variants={containerVariants}
+            >
               {values.map((val, idx) => {
                 const IconComponent = val.icon;
                 return (
                   <motion.div 
                     key={idx} 
                     className="bg-slate-900/40 border border-slate-800/60 transition-all duration-300 rounded-2xl p-6 flex flex-col space-y-4"
+                    variants={itemVariants}
                     whileHover={{ y: -6, borderColor: 'rgba(99, 102, 241, 0.3)', backgroundColor: 'rgba(15, 23, 42, 0.8)' }}
                   >
                     <div className="p-3 bg-indigo-500/10 border border-indigo-500/25 rounded-xl w-fit text-indigo-400">
@@ -124,13 +140,16 @@ export default function About() {
                   </motion.div>
                 );
               })}
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
-          {/* Call to action card */}
+          {/* Call to action card (scroll animation) */}
           <motion.div 
             className="bg-gradient-to-r from-indigo-950/40 via-purple-950/30 to-slate-950/40 border border-indigo-500/20 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8"
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ type: 'spring', stiffness: 80, damping: 15 }}
             whileHover={{ boxShadow: '0 10px 30px -10px rgba(99, 102, 241, 0.15)' }}
           >
             <div className="space-y-3 text-center md:text-left">
@@ -149,7 +168,7 @@ export default function About() {
             </div>
           </motion.div>
 
-        </motion.div>
+        </div>
       </div>
     </MainLayout>
   );

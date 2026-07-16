@@ -8,6 +8,7 @@ import { useAuth } from '../../context/AuthContext';
 import MainLayout from '../../components/MainLayout';
 import toast from 'react-hot-toast';
 import { Mail, Lock, LogIn, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Login() {
   const { user, login, loginWithGoogle } = useAuth();
@@ -85,7 +86,12 @@ export default function Login() {
   return (
     <MainLayout title="Login">
       <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8 bg-slate-900 border border-slate-800/80 p-8 rounded-2xl shadow-xl relative">
+        <motion.div 
+          className="max-w-md w-full space-y-8 bg-slate-900 border border-slate-800/80 p-8 rounded-2xl shadow-xl relative"
+          initial={{ opacity: 0, scale: 0.95, y: 15 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+        >
           <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl pointer-events-none" />
           
           <div className="text-center">
@@ -99,9 +105,13 @@ export default function Login() {
 
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             {errorMsg && (
-              <div className="p-3.5 text-sm bg-rose-950/30 border border-rose-800/30 text-rose-400 rounded-xl">
+              <motion.div 
+                className="p-3.5 text-sm bg-rose-950/30 border border-rose-800/30 text-rose-450 rounded-xl"
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
                 {errorMsg}
-              </div>
+              </motion.div>
             )}
 
             <div className="space-y-4 rounded-md shadow-sm">
@@ -137,7 +147,7 @@ export default function Login() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 block w-full bg-slate-950 border border-slate-850 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-3 px-4 text-slate-100 placeholder-slate-550 focus:outline-none text-sm transition-all"
+                    className="pl-10 block w-full bg-slate-950 border border-slate-850 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-3 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="••••••••"
                   />
                 </div>
@@ -145,16 +155,18 @@ export default function Login() {
             </div>
 
             <div>
-              <button
+              <motion.button
                 type="submit"
                 disabled={loading}
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-indigo-650 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors disabled:opacity-50"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors disabled:opacity-50 cursor-pointer"
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  <LogIn className="h-5 h-5 text-indigo-400 group-hover:text-indigo-300" />
+                  <LogIn className="h-5 w-5 text-indigo-400 group-hover:text-indigo-300" />
                 </span>
                 {loading ? 'Signing in...' : 'Sign In'}
-              </button>
+              </motion.button>
             </div>
           </form>
 
@@ -189,7 +201,7 @@ export default function Login() {
               </Link>
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </MainLayout>
   );

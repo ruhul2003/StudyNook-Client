@@ -8,6 +8,7 @@ import MainLayout from '../../components/MainLayout';
 import Spinner from '../../components/Spinner';
 import toast from 'react-hot-toast';
 import { PlusCircle, Layers, Users, DollarSign, Image, FileText } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const AMENITY_OPTIONS = [
   'Whiteboard',
@@ -85,26 +86,50 @@ export default function AddRoom() {
     }
   };
 
+  const formContainerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 90,
+        damping: 15,
+        staggerChildren: 0.08,
+      },
+    },
+  };
+
+  const inputVariants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
+  };
+
   return (
     <MainLayout title="Add Room">
       <div className="max-w-3xl mx-auto py-4">
-        <div className="bg-slate-900 border border-slate-800/80 p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl relative">
+        <motion.div 
+          className="bg-slate-900 border border-slate-800/80 p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl relative"
+          initial="hidden"
+          animate="visible"
+          variants={formContainerVariants}
+        >
           <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl pointer-events-none" />
           
-          <div className="pb-4 border-b border-slate-800/50">
+          <motion.div className="pb-4 border-b border-slate-800/50" variants={inputVariants}>
             <h1 className="text-2xl sm:text-3xl font-black text-white flex items-center gap-2">
               <PlusCircle className="text-indigo-400 w-7 h-7" /> List a Study Room
             </h1>
             <p className="text-sm text-slate-400 mt-1">
               Add details about the room you control for users to browse and book.
             </p>
-          </div>
+          </motion.div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             
             {/* Row 1: Name and Image */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
+              <motion.div variants={inputVariants}>
                 <label className="text-sm font-semibold text-slate-300 block mb-1.5">
                   Room Name <span className="text-rose-500">*</span>
                 </label>
@@ -121,9 +146,9 @@ export default function AddRoom() {
                     placeholder="e.g. Quiet Area Group Room 3B"
                   />
                 </div>
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div variants={inputVariants}>
                 <label className="text-sm font-semibold text-slate-300 block mb-1.5">
                   Image URL <span className="text-rose-500">*</span>
                 </label>
@@ -140,11 +165,11 @@ export default function AddRoom() {
                     placeholder="https://images.unsplash.com/photo-..."
                   />
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Description */}
-            <div>
+            <motion.div variants={inputVariants}>
               <label className="text-sm font-semibold text-slate-300 block mb-1.5">
                 Detailed Description <span className="text-rose-500">*</span>
               </label>
@@ -160,11 +185,11 @@ export default function AddRoom() {
                   placeholder="Describe the room, visual guides, keys, whiteboard details..."
                 />
               </div>
-            </div>
+            </motion.div>
 
             {/* Row 2: Floor, Capacity, Hourly Rate */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div>
+              <motion.div variants={inputVariants}>
                 <label className="text-sm font-semibold text-slate-300 block mb-1.5">
                   Floor <span className="text-rose-500">*</span>
                 </label>
@@ -175,7 +200,7 @@ export default function AddRoom() {
                   <select
                     value={floor}
                     onChange={(e) => setFloor(e.target.value)}
-                    className="pl-11 block w-full bg-slate-950 border border-slate-850 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-200 focus:outline-none text-sm transition-all"
+                    className="pl-11 block w-full bg-slate-950 border border-slate-850 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-205 focus:outline-none text-sm transition-all"
                   >
                     <option value="1st Floor">1st Floor</option>
                     <option value="2nd Floor">2nd Floor</option>
@@ -186,9 +211,9 @@ export default function AddRoom() {
                     <option value="Floor 4">Floor 4</option>
                   </select>
                 </div>
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div variants={inputVariants}>
                 <label className="text-sm font-semibold text-slate-300 block mb-1.5">
                   Seat Capacity <span className="text-rose-500">*</span>
                 </label>
@@ -206,9 +231,9 @@ export default function AddRoom() {
                     placeholder="e.g. 4"
                   />
                 </div>
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div variants={inputVariants}>
                 <label className="text-sm font-semibold text-slate-300 block mb-1.5">
                   Hourly Rate ($) <span className="text-rose-500">*</span>
                 </label>
@@ -226,11 +251,11 @@ export default function AddRoom() {
                     placeholder="e.g. 5"
                   />
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Amenities Checklist */}
-            <div className="space-y-3">
+            <motion.div className="space-y-3" variants={inputVariants}>
               <label className="text-sm font-semibold text-slate-300 block">
                 Amenities
               </label>
@@ -241,34 +266,38 @@ export default function AddRoom() {
                       type="checkbox"
                       checked={selectedAmenities.includes(option)}
                       onChange={() => handleAmenityChange(option)}
-                      className="rounded border-slate-850 text-indigo-650 bg-slate-900 focus:ring-indigo-550 w-4 h-4 cursor-pointer"
+                      className="rounded border-slate-850 text-indigo-600 bg-slate-900 focus:ring-indigo-500 w-4 h-4 cursor-pointer"
                     />
                     <span>{option}</span>
                   </label>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Form Actions */}
-            <div className="flex gap-4 pt-4 border-t border-slate-800/40">
-              <button
+            <motion.div className="flex gap-4 pt-4 border-t border-slate-800/40" variants={inputVariants}>
+              <motion.button
                 type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => router.back()}
-                className="w-1/2 py-3 px-4 bg-slate-950 hover:bg-slate-850 text-slate-300 font-semibold rounded-xl text-center border border-slate-850 transition-colors"
+                className="w-1/2 py-3 px-4 bg-slate-950 hover:bg-slate-850 text-slate-300 font-semibold rounded-xl text-center border border-slate-850 transition-colors cursor-pointer"
               >
                 Back
-              </button>
-              <button
+              </motion.button>
+              <motion.button
                 type="submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 disabled={submitting}
-                className="w-1/2 py-3 px-4 bg-gradient-to-r from-indigo-500 to-violet-650 hover:from-indigo-600 hover:to-violet-755 text-white font-bold rounded-xl text-center transition-colors disabled:opacity-50"
+                className="w-1/2 py-3 px-4 bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-750 text-white font-bold rounded-xl text-center transition-colors disabled:opacity-50 cursor-pointer"
               >
                 {submitting ? 'Creating listing...' : 'Create Room Listing'}
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
           </form>
-        </div>
+        </motion.div>
       </div>
     </MainLayout>
   );

@@ -8,6 +8,7 @@ import { useAuth } from '../../context/AuthContext';
 import MainLayout from '../../components/MainLayout';
 import toast from 'react-hot-toast';
 import { User, Mail, Image, Lock, UserPlus, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Register() {
   const { user, register, loginWithGoogle } = useAuth();
@@ -102,7 +103,12 @@ export default function Register() {
   return (
     <MainLayout title="Register">
       <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8 bg-slate-900 border border-slate-800/80 p-8 rounded-2xl shadow-xl relative">
+        <motion.div 
+          className="max-w-md w-full space-y-8 bg-slate-900 border border-slate-800/80 p-8 rounded-2xl shadow-xl relative"
+          initial={{ opacity: 0, scale: 0.95, y: 15 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+        >
           <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl pointer-events-none" />
 
           <div className="text-center">
@@ -116,14 +122,18 @@ export default function Register() {
 
           <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
             {errorMsg && (
-              <div className="p-3.5 text-sm bg-rose-950/30 border border-rose-800/30 text-rose-400 rounded-xl animate-shake">
+              <motion.div 
+                className="p-3.5 text-sm bg-rose-950/30 border border-rose-800/30 text-rose-455 rounded-xl"
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
                 {errorMsg}
-              </div>
+              </motion.div>
             )}
 
             <div className="space-y-4 rounded-md shadow-sm">
               <div>
-                <label className="text-sm font-medium text-slate-350 block mb-1.5">
+                <label className="text-sm font-medium text-slate-300 block mb-1.5">
                   Full Name
                 </label>
                 <div className="relative">
@@ -135,14 +145,14 @@ export default function Register() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="pl-10 block w-full bg-slate-950 border border-slate-850 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
+                    className="pl-10 block w-full bg-slate-950 border border-slate-855 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="John Doe"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-sm font-medium text-slate-355 block mb-1.5">
+                <label className="text-sm font-medium text-slate-300 block mb-1.5">
                   Email Address
                 </label>
                 <div className="relative">
@@ -154,14 +164,14 @@ export default function Register() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 block w-full bg-slate-950 border border-slate-850 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
+                    className="pl-10 block w-full bg-slate-950 border border-slate-855 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="john@example.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-sm font-medium text-slate-355 block mb-1.5">
+                <label className="text-sm font-medium text-slate-300 block mb-1.5">
                   Photo URL
                 </label>
                 <div className="relative">
@@ -173,14 +183,14 @@ export default function Register() {
                     required
                     value={photoUrl}
                     onChange={(e) => setPhotoUrl(e.target.value)}
-                    className="pl-10 block w-full bg-slate-950 border border-slate-850 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
+                    className="pl-10 block w-full bg-slate-950 border border-slate-855 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="https://images.unsplash.com/photo-..."
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-sm font-medium text-slate-355 block mb-1.5">
+                <label className="text-sm font-medium text-slate-300 block mb-1.5">
                   Password
                 </label>
                 <div className="relative">
@@ -192,22 +202,22 @@ export default function Register() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 block w-full bg-slate-950 border border-slate-850 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-550 focus:outline-none text-sm transition-all"
+                    className="pl-10 block w-full bg-slate-950 border border-slate-855 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="••••••••"
                   />
                 </div>
 
                 {/* Password Checklist */}
                 <div className="mt-2.5 grid grid-cols-3 gap-2 text-xs">
-                  <span className={`flex items-center gap-1 font-medium transition-colors ${passLength ? 'text-emerald-450' : 'text-slate-500'}`}>
+                  <span className={`flex items-center gap-1 font-medium transition-colors ${passLength ? 'text-emerald-400' : 'text-slate-500'}`}>
                     <span className={`w-1.5 h-1.5 rounded-full ${passLength ? 'bg-emerald-500' : 'bg-slate-700'}`} />
-                    6+ characters
+                    6+ chars
                   </span>
-                  <span className={`flex items-center gap-1 font-medium transition-colors ${passUpper ? 'text-emerald-450' : 'text-slate-500'}`}>
+                  <span className={`flex items-center gap-1 font-medium transition-colors ${passUpper ? 'text-emerald-400' : 'text-slate-500'}`}>
                     <span className={`w-1.5 h-1.5 rounded-full ${passUpper ? 'bg-emerald-500' : 'bg-slate-700'}`} />
                     1 uppercase
                   </span>
-                  <span className={`flex items-center gap-1 font-medium transition-colors ${passLower ? 'text-emerald-450' : 'text-slate-500'}`}>
+                  <span className={`flex items-center gap-1 font-medium transition-colors ${passLower ? 'text-emerald-400' : 'text-slate-500'}`}>
                     <span className={`w-1.5 h-1.5 rounded-full ${passLower ? 'bg-emerald-500' : 'bg-slate-700'}`} />
                     1 lowercase
                   </span>
@@ -216,16 +226,18 @@ export default function Register() {
             </div>
 
             <div>
-              <button
+              <motion.button
                 type="submit"
                 disabled={loading}
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-indigo-650 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors disabled:opacity-50"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-indigo-650 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors disabled:opacity-50 cursor-pointer"
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  <UserPlus className="h-5 w-5 text-indigo-400 group-hover:text-indigo-300" />
+                  <UserPlus className="h-5 w-5 text-indigo-450 group-hover:text-indigo-400" />
                 </span>
                 {loading ? 'Registering...' : 'Register'}
-              </button>
+              </motion.button>
             </div>
           </form>
 
@@ -260,7 +272,7 @@ export default function Register() {
               </Link>
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </MainLayout>
   );
