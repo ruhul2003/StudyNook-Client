@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import api from '../../lib/axios';
+import api from '../../lib/api-client';
 import MainLayout from '../../components/MainLayout';
 import RoomCard from '../../components/RoomCard';
 import Spinner from '../../components/Spinner';

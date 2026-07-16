@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useAuth } from '../../../context/AuthContext';
-import api from '../../../lib/axios';
+import api from '../../../lib/api-client';
 import MainLayout from '../../../components/MainLayout';
 import Spinner from '../../../components/Spinner';
 import toast from 'react-hot-toast';

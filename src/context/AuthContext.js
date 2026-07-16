@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import api from '../lib/axios';
+import * as authApi from '../lib/auth';
 
 const AuthContext = createContext(null);
 
@@ -13,8 +13,8 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkLoggedIn = async () => {
       try {
-        const res = await api.get('/api/auth/me');
-        setUser(res.data);
+        const userData = await authApi.getMe();
+        setUser(userData);
       } catch (err) {
         setUser(null);
       } finally {
@@ -27,8 +27,8 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     setLoading(true);
     try {
-      const res = await api.post('/api/auth/login', { email, password });
-      setUser(res.data);
+      const userData = await authApi.login(email, password);
+      setUser(userData);
       return { success: true };
     } catch (err) {
       const message = err.response?.data?.message || 'Login failed';
@@ -41,8 +41,8 @@ export const AuthProvider = ({ children }) => {
   const register = async (name, email, photoUrl, password) => {
     setLoading(true);
     try {
-      const res = await api.post('/api/auth/register', { name, email, photoUrl, password });
-      return { success: true, message: res.data.message };
+      const resData = await authApi.register(name, email, photoUrl, password);
+      return { success: true, message: resData.message };
     } catch (err) {
       const message = err.response?.data?.message || 'Registration failed';
       return { success: false, message };
@@ -54,8 +54,8 @@ export const AuthProvider = ({ children }) => {
   const loginWithGoogle = async (token) => {
     setLoading(true);
     try {
-      const res = await api.post('/api/auth/google', { token });
-      setUser(res.data);
+      const userData = await authApi.loginWithGoogle(token);
+      setUser(userData);
       return { success: true };
     } catch (err) {
       const message = err.response?.data?.message || 'Google login failed';
@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     setLoading(true);
     try {
-      await api.post('/api/auth/logout');
+      await authApi.logout();
       setUser(null);
     } catch (err) {
       console.error('Logout error:', err);

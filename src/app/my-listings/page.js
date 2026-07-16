@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../../context/AuthContext';
-import api from '../../lib/axios';
+import api from '../../lib/api-client';
 import MainLayout from '../../components/MainLayout';
 import RoomCard from '../../components/RoomCard';
 import Spinner from '../../components/Spinner';

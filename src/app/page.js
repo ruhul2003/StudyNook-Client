@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import api from '../lib/axios';
+import api from '../lib/api-client';
 import MainLayout from '../components/MainLayout';
 import RoomCard from '../components/RoomCard';
 import Spinner from '../components/Spinner';
