@@ -3,6 +3,7 @@
 import React from 'react';
 import MainLayout from '../../components/MainLayout';
 import { BookOpen, Users, Shield, Target, GraduationCap } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function About() {
   const stats = [
@@ -30,6 +31,29 @@ export default function About() {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+  };
+
   return (
     <MainLayout title="About Us">
       <div className="relative overflow-hidden py-12">
@@ -37,10 +61,15 @@ export default function About() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-fuchsia-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="max-w-5xl mx-auto space-y-16 relative">
+        <motion.div 
+          className="max-w-5xl mx-auto space-y-16 relative"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
           
           {/* Header section */}
-          <div className="text-center space-y-4">
+          <motion.div className="text-center space-y-4" variants={itemVariants}>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-550/20">
               <GraduationCap className="w-3.5 h-3.5" /> About StudyNook
             </span>
@@ -53,20 +82,28 @@ export default function About() {
             <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
               StudyNook is a decentralized platform designed to streamline study room discovery, list-sharing, and reservation management. We help university students find quiet spaces in libraries, academic halls, and campus centers.
             </p>
-          </div>
+          </motion.div>
 
           {/* Stats section */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6" 
+            variants={itemVariants}
+          >
             {stats.map((stat, idx) => (
-              <div key={idx} className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 text-center backdrop-blur-sm">
+              <motion.div 
+                key={idx} 
+                className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 text-center backdrop-blur-sm"
+                whileHover={{ scale: 1.05, borderColor: 'rgba(99, 102, 241, 0.4)' }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              >
                 <p className="text-3xl sm:text-4xl font-extrabold text-white bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">{stat.value}</p>
                 <p className="text-sm font-medium text-slate-400 mt-2">{stat.label}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Core Values grid */}
-          <div className="space-y-8">
+          <motion.div className="space-y-8" variants={itemVariants}>
             <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">
               Why Choose StudyNook?
             </h2>
@@ -74,32 +111,45 @@ export default function About() {
               {values.map((val, idx) => {
                 const IconComponent = val.icon;
                 return (
-                  <div key={idx} className="bg-slate-900/40 hover:bg-slate-900/80 border border-slate-800/60 hover:border-slate-700/80 transition-all duration-300 rounded-2xl p-6 flex flex-col space-y-4">
+                  <motion.div 
+                    key={idx} 
+                    className="bg-slate-900/40 border border-slate-800/60 transition-all duration-300 rounded-2xl p-6 flex flex-col space-y-4"
+                    whileHover={{ y: -6, borderColor: 'rgba(99, 102, 241, 0.3)', backgroundColor: 'rgba(15, 23, 42, 0.8)' }}
+                  >
                     <div className="p-3 bg-indigo-500/10 border border-indigo-500/25 rounded-xl w-fit text-indigo-400">
                       <IconComponent className="w-6 h-6" />
                     </div>
                     <h3 className="text-lg font-semibold text-white">{val.title}</h3>
                     <p className="text-sm text-slate-400 leading-relaxed">{val.description}</p>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
 
           {/* Call to action card */}
-          <div className="bg-gradient-to-r from-indigo-950/40 via-purple-950/30 to-slate-950/40 border border-indigo-500/20 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+          <motion.div 
+            className="bg-gradient-to-r from-indigo-950/40 via-purple-950/30 to-slate-950/40 border border-indigo-500/20 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8"
+            variants={itemVariants}
+            whileHover={{ boxShadow: '0 10px 30px -10px rgba(99, 102, 241, 0.15)' }}
+          >
             <div className="space-y-3 text-center md:text-left">
               <h3 className="text-2xl font-bold text-white">Ready to boost your study game?</h3>
               <p className="text-sm text-slate-300 max-w-md">Find the perfect location, configure the ideal timeframe, and get straight to studying.</p>
             </div>
             <div className="flex gap-4">
-              <a href="/rooms" className="px-6 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-xl shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/35 transition-all duration-200 text-sm">
+              <motion.a 
+                href="/rooms" 
+                className="px-6 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-xl shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/35 transition-all duration-200 text-sm block"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 Explore Rooms
-              </a>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
 
-        </div>
+        </motion.div>
       </div>
     </MainLayout>
   );
