@@ -144,7 +144,7 @@ export default function Rooms() {
           {/* Header Line: Search & Quick Reset */}
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between pb-5 border-b border-zinc-800/60">
             <div className="relative w-full md:max-w-md">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-550">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-500">
                 <Search className="w-4 h-4 stroke-1" />
               </div>
               <input
@@ -157,7 +157,7 @@ export default function Rooms() {
             </div>
 
             <div className="flex items-center justify-between md:justify-end gap-5 w-full md:w-auto">
-              <span className="text-xs font-semibold text-zinc-450 tracking-wider">
+              <span className="text-xs font-semibold text-zinc-400 tracking-wider">
                 {rooms.length} {rooms.length === 1 ? 'workspace' : 'workspaces'} matching
               </span>
               {(search || floor || minRate || maxRate || selectedAmenities.length > 0) && (
@@ -165,7 +165,7 @@ export default function Rooms() {
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   onClick={handleResetFilters}
-                  className="text-xs text-rose-450 hover:text-rose-400 flex items-center gap-1 font-semibold transition-colors px-3 py-2 rounded-xl bg-rose-500/5 hover:bg-rose-500/10 border border-rose-500/10 cursor-pointer"
+                  className="text-xs text-rose-400 hover:text-rose-400 flex items-center gap-1 font-semibold transition-colors px-3 py-2 rounded-xl bg-rose-500/5 hover:bg-rose-500/10 border border-rose-500/10 cursor-pointer"
                 >
                   <RefreshCw className="w-3.5 h-3.5" /> Clear Filters
                 </motion.button>
@@ -189,8 +189,8 @@ export default function Rooms() {
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setFloor(opt.value)}
                       className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-all cursor-pointer ${isActive
-                          ? 'bg-indigo-600 border-indigo-550 text-white shadow-md shadow-indigo-500/15'
-                          : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-405 hover:border-zinc-700/80 hover:text-zinc-200'
+                          ? 'bg-indigo-600 border-indigo-500 text-white shadow-md shadow-indigo-500/15'
+                          : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700/80 hover:text-zinc-200'
                         }`}
                     >
                       {opt.label}
@@ -209,8 +209,8 @@ export default function Rooms() {
                   <button
                     onClick={() => handleBudgetPreset('')}
                     className={`px-2.5 py-1 text-xs font-medium rounded-lg border transition-all cursor-pointer ${budgetPreset === '' && !minRate && !maxRate
-                        ? 'bg-indigo-600 border-indigo-550 text-white'
-                        : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-405 hover:border-zinc-700'
+                        ? 'bg-indigo-600 border-indigo-500 text-white'
+                        : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700'
                       }`}
                   >
                     Any
@@ -218,8 +218,8 @@ export default function Rooms() {
                   <button
                     onClick={() => handleBudgetPreset('under-10')}
                     className={`px-2.5 py-1 text-xs font-medium rounded-lg border transition-all cursor-pointer ${budgetPreset === 'under-10'
-                        ? 'bg-indigo-600 border-indigo-550 text-white'
-                        : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-405 hover:border-zinc-700'
+                        ? 'bg-indigo-600 border-indigo-500 text-white'
+                        : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700'
                       }`}
                   >
                     Under $10
@@ -227,8 +227,8 @@ export default function Rooms() {
                   <button
                     onClick={() => handleBudgetPreset('10-20')}
                     className={`px-2.5 py-1 text-xs font-medium rounded-lg border transition-all cursor-pointer ${budgetPreset === '10-20'
-                        ? 'bg-indigo-600 border-indigo-550 text-white'
-                        : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-405 hover:border-zinc-700'
+                        ? 'bg-indigo-600 border-indigo-500 text-white'
+                        : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700'
                       }`}
                   >
                     $10 - $20
@@ -236,8 +236,8 @@ export default function Rooms() {
                   <button
                     onClick={() => handleBudgetPreset('20-plus')}
                     className={`px-2.5 py-1 text-xs font-medium rounded-lg border transition-all cursor-pointer ${budgetPreset === '20-plus'
-                        ? 'bg-indigo-600 border-indigo-550 text-white'
-                        : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-405 hover:border-zinc-700'
+                        ? 'bg-indigo-600 border-indigo-500 text-white'
+                        : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700'
                       }`}
                   >
                     $20+
@@ -247,24 +247,24 @@ export default function Rooms() {
                 {/* Range inputs */}
                 <div className="flex items-center gap-2">
                   <div className="relative flex-grow">
-                    <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs text-zinc-550">$</span>
+                    <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs text-zinc-500">$</span>
                     <input
                       type="number"
                       placeholder="Min"
                       value={minRate}
                       onChange={(e) => handleMinRateChange(e.target.value)}
-                      className="pl-6 pr-2 py-1.5 block w-full bg-zinc-950 border border-zinc-800/80 rounded-lg text-xs text-zinc-300 focus:outline-none focus:border-indigo-550"
+                      className="pl-6 pr-2 py-1.5 block w-full bg-zinc-950 border border-zinc-800/80 rounded-lg text-xs text-zinc-300 focus:outline-none focus:border-indigo-500"
                     />
                   </div>
                   <span className="text-zinc-650 text-xs font-bold px-0.5">to</span>
                   <div className="relative flex-grow">
-                    <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs text-zinc-550">$</span>
+                    <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs text-zinc-500">$</span>
                     <input
                       type="number"
                       placeholder="Max"
                       value={maxRate}
                       onChange={(e) => handleMaxRateChange(e.target.value)}
-                      className="pl-6 pr-2 py-1.5 block w-full bg-zinc-950 border border-zinc-800/80 rounded-lg text-xs text-zinc-300 focus:outline-none focus:border-indigo-550"
+                      className="pl-6 pr-2 py-1.5 block w-full bg-zinc-950 border border-zinc-800/80 rounded-lg text-xs text-zinc-300 focus:outline-none focus:border-indigo-500"
                     />
                   </div>
                 </div>
@@ -284,8 +284,8 @@ export default function Rooms() {
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handleAmenityChange(option)}
                       className={`px-3.5 py-1.5 text-xs font-medium rounded-lg border transition-all cursor-pointer ${isSelected
-                          ? 'bg-indigo-600 border-indigo-555 text-white shadow-md shadow-indigo-500/15'
-                          : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-405 hover:border-zinc-700/80'
+                          ? 'bg-indigo-600 border-indigo-500 text-white shadow-md shadow-indigo-500/15'
+                          : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700/80'
                         }`}
                     >
                       {option}

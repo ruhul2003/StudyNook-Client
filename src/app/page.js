@@ -64,7 +64,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-550/20">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
             <Zap className="w-3.5 h-3.5" /> Book Instantly, Focus Better
           </span>
           <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight leading-tight">
@@ -88,7 +88,7 @@ export default function Home() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
               <Link
                 href="/add-room"
-                className="w-full sm:w-auto px-8 py-3.5 text-base font-semibold bg-slate-900 hover:bg-slate-850 text-slate-200 hover:text-white rounded-xl border border-slate-800 hover:border-slate-700 transition-colors block text-center"
+                className="w-full sm:w-auto px-8 py-3.5 text-base font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white rounded-xl border border-slate-800 hover:border-slate-700 transition-colors block text-center"
               >
                 List a Room
               </Link>
@@ -119,8 +119,8 @@ export default function Home() {
         {loading ? (
           <Spinner />
         ) : rooms.length === 0 ? (
-          <div className="text-center py-16 bg-slate-900/50 rounded-2xl border border-slate-850">
-            <p className="text-slate-450">No study rooms available at the moment. Try listing one!</p>
+          <div className="text-center py-16 bg-slate-900/50 rounded-2xl border border-slate-800">
+            <p className="text-slate-400">No study rooms available at the moment. Try listing one!</p>
           </div>
         ) : (
           <motion.div 
@@ -229,19 +229,19 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
               <motion.div whileHover={{ y: -3 }} className="p-6 bg-slate-950/80 rounded-2xl border border-slate-900 text-center">
                 <span className="block text-3xl font-extrabold text-indigo-400">99.8%</span>
-                <span className="text-xs text-slate-450 mt-1 block">Booking Success</span>
+                <span className="text-xs text-slate-400 mt-1 block">Booking Success</span>
               </motion.div>
               <motion.div whileHover={{ y: -3 }} className="p-6 bg-slate-950/80 rounded-2xl border border-slate-900 text-center">
                 <span className="block text-3xl font-extrabold text-indigo-400">12k+</span>
-                <span className="text-xs text-slate-450 mt-1 block">Hours Reserved</span>
+                <span className="text-xs text-slate-400 mt-1 block">Hours Reserved</span>
               </motion.div>
               <motion.div whileHover={{ y: -3 }} className="p-6 bg-slate-950/80 rounded-2xl border border-slate-900 text-center">
                 <span className="block text-3xl font-extrabold text-indigo-400">1.5h</span>
-                <span className="text-xs text-slate-450 mt-1 block">Avg. Session Time</span>
+                <span className="text-xs text-slate-400 mt-1 block">Avg. Session Time</span>
               </motion.div>
               <motion.div whileHover={{ y: -3 }} className="p-6 bg-slate-950/80 rounded-2xl border border-slate-900 text-center">
                 <span className="block text-3xl font-extrabold text-indigo-400">5.0★</span>
-                <span className="text-xs text-slate-450 mt-1 block">User Rating</span>
+                <span className="text-xs text-slate-400 mt-1 block">User Rating</span>
               </motion.div>
             </div>
           </div>

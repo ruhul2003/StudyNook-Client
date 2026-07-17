@@ -11,7 +11,7 @@ export default function RoomCard({ room }) {
     : description;
 
   return (
-    <div className="group flex flex-col h-full bg-slate-900 border border-slate-800/80 hover:border-indigo-500/40 rounded-2xl overflow-hidden transition-all duration-300 shadow-lg hover:shadow-indigo-550/10 hover:-translate-y-1">
+    <div className="group flex flex-col h-full bg-slate-900 border border-slate-800/80 hover:border-indigo-500/40 rounded-2xl overflow-hidden transition-all duration-300 shadow-lg hover:shadow-indigo-500/10 hover:-translate-y-1">
       {/* Image Container */}
       <div className="relative aspect-video w-full overflow-hidden bg-slate-950">
         <img
@@ -56,7 +56,7 @@ export default function RoomCard({ room }) {
           {amenities.slice(0, 3).map((amenity, idx) => (
             <span
               key={idx}
-              className="px-2 py-0.5 text-2xs font-medium bg-slate-800 text-indigo-300 rounded border border-slate-750"
+              className="px-2 py-0.5 text-2xs font-medium bg-slate-800 text-indigo-300 rounded border border-slate-700"
             >
               {amenity}
             </span>
@@ -72,7 +72,7 @@ export default function RoomCard({ room }) {
         <div>
           <Link
             href={`/rooms/${_id}`}
-            className="block w-full text-center px-4 py-2.5 text-sm font-semibold bg-slate-850 hover:bg-indigo-600 text-slate-200 hover:text-white rounded-xl transition-all duration-200 border border-slate-800 hover:border-indigo-500 shadow-sm"
+            className="block w-full text-center px-4 py-2.5 text-sm font-semibold bg-slate-800 hover:bg-indigo-600 text-slate-200 hover:text-white rounded-xl transition-all duration-200 border border-slate-800 hover:border-indigo-500 shadow-sm"
           >
             View Details
           </Link>

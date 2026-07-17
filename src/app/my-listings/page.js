@@ -98,7 +98,7 @@ export default function MyListings() {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               href="/add-room"
-              className="flex items-center gap-1.5 px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-650 hover:to-violet-700 text-white font-bold rounded-xl shadow-lg transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white font-bold rounded-xl shadow-lg transition-all cursor-pointer"
             >
               <Plus className="w-4 h-4" /> Add Room
             </Link>
@@ -110,17 +110,17 @@ export default function MyListings() {
           <Spinner />
         ) : rooms.length === 0 ? (
           <motion.div 
-            className="text-center py-20 bg-slate-900/50 rounded-3xl border border-slate-850/80"
+            className="text-center py-20 bg-slate-900/50 rounded-3xl border border-slate-800/80"
             variants={itemVariants}
           >
             <AlertCircle className="w-16 h-16 text-slate-600 mx-auto mb-4" />
             <h2 className="text-xl font-bold text-slate-300">No rooms listed yet</h2>
-            <p className="text-slate-450 text-sm mt-1 mb-6">
+            <p className="text-slate-400 text-sm mt-1 mb-6">
               You haven't listed any private study rooms for bookings yet.
             </p>
             <Link
               href="/add-room"
-              className="px-5 py-2.5 bg-indigo-500/10 hover:bg-indigo-500 text-indigo-400 hover:text-white border border-indigo-550/20 hover:border-transparent text-sm font-semibold rounded-xl transition-all cursor-pointer inline-block"
+              className="px-5 py-2.5 bg-indigo-500/10 hover:bg-indigo-500 text-indigo-400 hover:text-white border border-indigo-500/20 hover:border-transparent text-sm font-semibold rounded-xl transition-all cursor-pointer inline-block"
             >
               List Your First Room
             </Link>

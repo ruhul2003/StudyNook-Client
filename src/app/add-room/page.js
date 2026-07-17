@@ -142,7 +142,7 @@ export default function AddRoom() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="pl-11 block w-full bg-slate-950 border border-slate-850 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
+                    className="pl-11 block w-full bg-slate-950 border border-slate-800 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="e.g. Quiet Area Group Room 3B"
                   />
                 </div>
@@ -161,7 +161,7 @@ export default function AddRoom() {
                     required
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
-                    className="pl-11 block w-full bg-slate-950 border border-slate-850 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
+                    className="pl-11 block w-full bg-slate-950 border border-slate-800 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="https://images.unsplash.com/photo-..."
                   />
                 </div>
@@ -181,7 +181,7 @@ export default function AddRoom() {
                   required
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="pl-11 block w-full bg-slate-950 border border-slate-850 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all min-h-[120px]"
+                  className="pl-11 block w-full bg-slate-950 border border-slate-800 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all min-h-[120px]"
                   placeholder="Describe the room, visual guides, keys, whiteboard details..."
                 />
               </div>
@@ -200,7 +200,7 @@ export default function AddRoom() {
                   <select
                     value={floor}
                     onChange={(e) => setFloor(e.target.value)}
-                    className="pl-11 block w-full bg-slate-950 border border-slate-850 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-205 focus:outline-none text-sm transition-all"
+                    className="pl-11 block w-full bg-slate-950 border border-slate-800 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-205 focus:outline-none text-sm transition-all"
                   >
                     <option value="1st Floor">1st Floor</option>
                     <option value="2nd Floor">2nd Floor</option>
@@ -227,7 +227,7 @@ export default function AddRoom() {
                     min="1"
                     value={capacity}
                     onChange={(e) => setCapacity(e.target.value)}
-                    className="pl-11 block w-full bg-slate-950 border border-slate-850 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
+                    className="pl-11 block w-full bg-slate-950 border border-slate-800 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="e.g. 4"
                   />
                 </div>
@@ -247,7 +247,7 @@ export default function AddRoom() {
                     min="1"
                     value={hourlyRate}
                     onChange={(e) => setHourlyRate(e.target.value)}
-                    className="pl-11 block w-full bg-slate-950 border border-slate-850 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
+                    className="pl-11 block w-full bg-slate-950 border border-slate-800 hover:border-slate-800 focus:border-indigo-500 rounded-xl py-3 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="e.g. 5"
                   />
                 </div>
@@ -259,14 +259,14 @@ export default function AddRoom() {
               <label className="text-sm font-semibold text-slate-300 block">
                 Amenities
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 bg-slate-950/60 rounded-2xl border border-slate-850">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 bg-slate-950/60 rounded-2xl border border-slate-800">
                 {AMENITY_OPTIONS.map((option) => (
                   <label key={option} className="flex items-center gap-3 text-sm text-slate-300 hover:text-slate-200 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={selectedAmenities.includes(option)}
                       onChange={() => handleAmenityChange(option)}
-                      className="rounded border-slate-850 text-indigo-600 bg-slate-900 focus:ring-indigo-500 w-4 h-4 cursor-pointer"
+                      className="rounded border-slate-800 text-indigo-600 bg-slate-900 focus:ring-indigo-500 w-4 h-4 cursor-pointer"
                     />
                     <span>{option}</span>
                   </label>
@@ -281,7 +281,7 @@ export default function AddRoom() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => router.back()}
-                className="w-1/2 py-3 px-4 bg-slate-950 hover:bg-slate-850 text-slate-300 font-semibold rounded-xl text-center border border-slate-850 transition-colors cursor-pointer"
+                className="w-1/2 py-3 px-4 bg-slate-950 hover:bg-slate-800 text-slate-300 font-semibold rounded-xl text-center border border-slate-800 transition-colors cursor-pointer"
               >
                 Back
               </motion.button>
@@ -290,7 +290,7 @@ export default function AddRoom() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={submitting}
-                className="w-1/2 py-3 px-4 bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-750 text-white font-bold rounded-xl text-center transition-colors disabled:opacity-50 cursor-pointer"
+                className="w-1/2 py-3 px-4 bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white font-bold rounded-xl text-center transition-colors disabled:opacity-50 cursor-pointer"
               >
                 {submitting ? 'Creating listing...' : 'Create Room Listing'}
               </motion.button>

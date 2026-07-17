@@ -132,7 +132,7 @@ export default function Navbar() {
                           setDropdownOpen(false);
                           logout();
                         }}
-                        className="w-full flex items-center gap-2 px-3 py-2 text-sm text-rose-400 hover:bg-rose-950/30 rounded-lg transition-colors mt-1 border-t border-slate-850"
+                        className="w-full flex items-center gap-2 px-3 py-2 text-sm text-rose-400 hover:bg-rose-950/30 rounded-lg transition-colors mt-1 border-t border-slate-800"
                       >
                         <LogOut className="w-4 h-4" />
                         Logout
@@ -151,7 +151,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/register"
-                  className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-750 text-white rounded-lg shadow-md hover:shadow-indigo-500/20 transition-all duration-200"
+                  className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white rounded-lg shadow-md hover:shadow-indigo-500/20 transition-all duration-200"
                 >
                   Register
                 </Link>
@@ -226,7 +226,7 @@ export default function Navbar() {
                   setIsOpen(false);
                   logout();
                 }}
-                className="w-full flex items-center gap-2 px-3 py-2 text-rose-450 hover:bg-rose-950/20 rounded-lg text-base font-medium transition-colors"
+                className="w-full flex items-center gap-2 px-3 py-2 text-rose-400 hover:bg-rose-950/20 rounded-lg text-base font-medium transition-colors"
               >
                 <LogOut className="w-5 h-5" />
                 Logout

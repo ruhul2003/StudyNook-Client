@@ -112,7 +112,7 @@ export default function Register() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="pl-10 block w-full bg-slate-950 border border-slate-855 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
+                    className="pl-10 block w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="John Doe"
                   />
                 </div>
@@ -131,7 +131,7 @@ export default function Register() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 block w-full bg-slate-955 border border-slate-855 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
+                    className="pl-10 block w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -150,7 +150,7 @@ export default function Register() {
                     required
                     value={photoUrl}
                     onChange={(e) => setPhotoUrl(e.target.value)}
-                    className="pl-10 block w-full bg-slate-955 border border-slate-855 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
+                    className="pl-10 block w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="https://images.unsplash.com/photo-..."
                   />
                 </div>
@@ -169,22 +169,22 @@ export default function Register() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 block w-full bg-slate-955 border border-slate-855 hover:border-slate-750 focus:border-indigo-550 focus:ring-1 focus:ring-indigo-550 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-550 focus:outline-none text-sm transition-all"
+                    className="pl-10 block w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl py-2.5 px-4 text-slate-100 placeholder-slate-500 focus:outline-none text-sm transition-all"
                     placeholder="••••••••"
                   />
                 </div>
 
                 {/* Password Checklist */}
                 <div className="mt-2.5 grid grid-cols-3 gap-2 text-xs">
-                  <span className={`flex items-center gap-1 font-medium transition-colors ${passLength ? 'text-emerald-450' : 'text-slate-500'}`}>
+                  <span className={`flex items-center gap-1 font-medium transition-colors ${passLength ? 'text-emerald-400' : 'text-slate-500'}`}>
                     <span className={`w-1.5 h-1.5 rounded-full ${passLength ? 'bg-emerald-500' : 'bg-slate-700'}`} />
                     6+ chars
                   </span>
-                  <span className={`flex items-center gap-1 font-medium transition-colors ${passUpper ? 'text-emerald-450' : 'text-slate-500'}`}>
+                  <span className={`flex items-center gap-1 font-medium transition-colors ${passUpper ? 'text-emerald-400' : 'text-slate-500'}`}>
                     <span className={`w-1.5 h-1.5 rounded-full ${passUpper ? 'bg-emerald-500' : 'bg-slate-700'}`} />
                     1 uppercase
                   </span>
-                  <span className={`flex items-center gap-1 font-medium transition-colors ${passLower ? 'text-emerald-450' : 'text-slate-500'}`}>
+                  <span className={`flex items-center gap-1 font-medium transition-colors ${passLower ? 'text-emerald-400' : 'text-slate-500'}`}>
                     <span className={`w-1.5 h-1.5 rounded-full ${passLower ? 'bg-emerald-500' : 'bg-slate-700'}`} />
                     1 lowercase
                   </span>
@@ -198,7 +198,7 @@ export default function Register() {
                 disabled={loading}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-indigo-650 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors disabled:opacity-50 cursor-pointer"
+                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors disabled:opacity-50 cursor-pointer"
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                   <UserPlus className="h-5 w-5 text-indigo-400 group-hover:text-indigo-300" />

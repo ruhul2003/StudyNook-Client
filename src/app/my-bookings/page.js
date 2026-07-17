@@ -121,19 +121,19 @@ export default function MyBookings() {
           <Spinner />
         ) : bookings.length === 0 ? (
           <motion.div 
-            className="text-center py-20 bg-slate-900/50 rounded-3xl border border-slate-850/80"
+            className="text-center py-20 bg-slate-900/50 rounded-3xl border border-slate-800/80"
             variants={itemVariants}
           >
             <AlertCircle className="w-16 h-16 text-slate-600 mx-auto mb-4" />
             <h2 className="text-xl font-bold text-slate-300">You have no bookings yet</h2>
-            <p className="text-slate-450 text-sm mt-1 mb-6">
+            <p className="text-slate-400 text-sm mt-1 mb-6">
               Browse the catalog to reserve a room for your study slots.
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => router.push('/rooms')}
-              className="px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-750 text-white font-bold rounded-xl shadow-lg transition-all cursor-pointer"
+              className="px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white font-bold rounded-xl shadow-lg transition-all cursor-pointer"
             >
               Browse Rooms
             </motion.button>
@@ -160,7 +160,7 @@ export default function MyBookings() {
                   {bookings.map((booking) => {
                     const room = booking.roomId;
                     return (
-                      <tr key={booking._id} className="hover:bg-slate-850/20 transition-colors">
+                      <tr key={booking._id} className="hover:bg-slate-800/20 transition-colors">
                         
                         {/* Room Column */}
                         <td className="py-4 px-6">
@@ -168,7 +168,7 @@ export default function MyBookings() {
                             <img
                               src={room?.image || 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=150'}
                               alt={room?.name || 'Study Room'}
-                              className="w-12 h-10 object-cover rounded-lg border border-slate-805"
+                              className="w-12 h-10 object-cover rounded-lg border border-slate-800"
                               onError={(e) => {
                                 e.target.src = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=150';
                               }}
@@ -177,7 +177,7 @@ export default function MyBookings() {
                               <span className="font-semibold text-slate-200 block max-w-[200px] truncate">
                                 {room?.name || 'Deleted Room'}
                               </span>
-                              <span className="text-2xs text-slate-450 block">{room?.floor || 'N/A'}</span>
+                              <span className="text-2xs text-slate-400 block">{room?.floor || 'N/A'}</span>
                             </div>
                           </div>
                         </td>
@@ -262,7 +262,7 @@ export default function MyBookings() {
               <div className="flex items-center gap-3 pt-2">
                 <button
                   onClick={() => setCancelConfirmOpen(false)}
-                  className="w-1/2 py-2.5 px-4 bg-slate-850 hover:bg-slate-800 text-slate-350 font-semibold rounded-xl border border-slate-800 transition-colors cursor-pointer"
+                  className="w-1/2 py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl border border-slate-700 transition-colors cursor-pointer"
                 >
                   No, Keep it
                 </button>
