@@ -54,6 +54,16 @@ export default function Home() {
     <MainLayout title="Home">
       {/* 1. Hero Section */}
       <section className="relative overflow-hidden py-20 lg:py-32 flex flex-col items-center text-center">
+        {/* Background Image with Dark Overlay */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <img 
+            src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&q=80&w=1920" 
+            alt="Library background" 
+            className="w-full h-full object-cover opacity-15"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950" />
+        </div>
+
         {/* Background gradient blur */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute top-1/4 left-1/3 w-[300px] h-[300px] bg-fuchsia-500/10 rounded-full blur-[100px] pointer-events-none" />
