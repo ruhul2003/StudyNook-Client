@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '../../context/AuthContext';
@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 import { Mail, Lock, LogIn, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export default function Login() {
+function LoginForm() {
   const { user, login, loginWithGoogle } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -188,5 +188,17 @@ export default function Login() {
         </motion.div>
       </div>
     </MainLayout>
+  );
+}
+
+export default function Login() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center text-slate-400">
+        Loading login...
+      </div>
+    }>
+      <LoginForm />
+    </Suspense>
   );
 }
