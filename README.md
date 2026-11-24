@@ -86,6 +86,7 @@ StudyNook-Client/
    Create a `.env.local` file in the root directory.
 
    ```env
+   NEXT_PUBLIC_API_URL=http://localhost:5000
    NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id
    BETTER_AUTH_SECRET=your_secret_key
    BETTER_AUTH_URL=http://localhost:3000
