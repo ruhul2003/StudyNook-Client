@@ -21,7 +21,7 @@ This repository contains the Next.js frontend client, which connects to the Stud
 - **UI & Styling**: React 19, Tailwind CSS v4, Geist Fonts, Lucide React
 - **Animations**: Framer Motion
 - **Authentication**: Better Auth
-- **Database**: MongoDB
+- **Database**: MongoDB (via the StudyNook backend API)
 - **Notifications**: React Hot Toast
 
 ## Project Structure
