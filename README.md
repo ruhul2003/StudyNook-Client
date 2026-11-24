@@ -67,7 +67,7 @@ StudyNook-Client/
 
 - Node.js version 18 or higher
 - npm package manager
-- Running backend API service for StudyNook
+- Running backend API service for StudyNook (defaults to `http://localhost:5000`)
 
 ### Installation
 
