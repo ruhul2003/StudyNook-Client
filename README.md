@@ -51,6 +51,9 @@ StudyNook-Client/
 │   ├── context/                # Context providers
 │   │   └── AuthContext.js      # Authentication state provider
 │   └── lib/                    # API client and auth helper functions
+│       ├── api-client.js       # Fetch wrapper for backend requests
+│       ├── auth-client.js      # Better Auth client instance
+│       └── auth.js             # Auth helper functions
 ├── .env.local                  # Environment variables
 ├── next.config.mjs             # Next.js configuration
 └── package.json
