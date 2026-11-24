@@ -27,7 +27,7 @@ This repository contains the Next.js frontend client, which connects to the Stud
 ## Project Structure
 
 ```
-studynook-client/
+StudyNook-Client/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
 │   │   ├── page.js             # Home page
