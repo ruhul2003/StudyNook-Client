@@ -2,6 +2,8 @@
 
 A modern study room booking platform that allows users to browse, reserve, and list private study spaces in their library.
 
+This repository contains the Next.js frontend client, which connects to the StudyNook backend API for rooms, bookings, and authentication.
+
 ## Features
 
 - **Browse Study Rooms**: Explore and filter available rooms by capacity, floor, and amenities.
