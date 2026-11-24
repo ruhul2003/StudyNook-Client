@@ -100,6 +100,8 @@ StudyNook-Client/
 
 5. Open http://localhost:3000 in your browser.
 
+> Make sure the backend API server is running before testing authentication, room creation, or bookings.
+
 ## Environment Variables
 
 | Variable | Description |
