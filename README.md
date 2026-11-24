@@ -137,6 +137,12 @@ StudyNook-Client/
 
 Run `npm run lint` and `npm run build` before opening a pull request to verify code quality and production compilation.
 
+## Contributing
+
+1. Fork the repository and create a feature branch.
+2. Commit your changes with clear, single-sentence messages.
+3. Open a pull request describing your updates.
+
 ## License
 
 This project is licensed under the MIT License.
