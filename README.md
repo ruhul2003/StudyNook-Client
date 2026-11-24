@@ -45,6 +45,9 @@ StudyNook-Client/
 │   ├── components/             # Reusable UI components
 │   │   ├── Navbar.js           # Top navigation bar
 │   │   ├── Footer.js           # Site footer
+│   │   ├── MainLayout.js       # Page layout wrapper
+│   │   ├── RoomCard.js         # Study room preview card
+│   │   └── Spinner.js          # Loading indicator
 │   ├── context/                # Context providers
 │   └── lib/                    # API client and auth helper functions
 ├── .env.local                  # Environment variables
