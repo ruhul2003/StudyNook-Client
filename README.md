@@ -135,6 +135,8 @@ StudyNook-Client/
 - `npm run start`: Starts the production server.
 - `npm run lint`: Runs ESLint to check for code quality.
 
+Run `npm run lint` and `npm run build` before opening a pull request to verify code quality and production compilation.
+
 ## License
 
 This project is licensed under the MIT License.
