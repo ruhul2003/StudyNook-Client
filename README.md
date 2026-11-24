@@ -121,6 +121,11 @@ StudyNook-Client/
 - `/login` — Sign in page
 - `/register` — Create a new account
 
+### Authenticated Routes
+- `/add-room` — Create a new study room listing
+- `/my-bookings` — View and cancel reservations
+- `/my-listings` — Manage your listed rooms
+
 ## Available Scripts
 
 - `npm run dev`: Starts the local development server.
