@@ -55,7 +55,9 @@ StudyNook-Client/
 │       ├── auth-client.js      # Better Auth client instance
 │       └── auth.js             # Auth helper functions
 ├── .env.local                  # Environment variables
+├── eslint.config.mjs           # ESLint configuration
 ├── next.config.mjs             # Next.js configuration
+├── postcss.config.mjs          # PostCSS configuration
 └── package.json
 ```
 
