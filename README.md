@@ -8,7 +8,7 @@ This repository contains the Next.js frontend client, which connects to the Stud
 
 - **Browse Study Rooms**: Search, explore, and filter available rooms by capacity, floor, and amenities.
 - **Instant Booking**: Reserve time slots with built-in double-booking protection.
-- **List a Room**: Authenticated users can list their own study spaces.
+- **List a Room**: Authenticated users can list their own study spaces with room details and amenities.
 - **User Authentication**: Supports Email/Password registration and Google OAuth using Better Auth.
 - **My Bookings**: View, manage, and cancel active reservations.
 - **My Listings**: Manage rooms created by the logged-in user.
