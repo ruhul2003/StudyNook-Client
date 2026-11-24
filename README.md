@@ -32,6 +32,7 @@ StudyNook-Client/
 │   ├── app/                    # Next.js App Router pages
 │   │   ├── page.js             # Home page
 │   │   ├── layout.js           # Root layout
+│   │   ├── globals.css         # Global Tailwind styles
 │   │   ├── rooms/              # Room browsing and details
 │   │   ├── add-room/           # Add room page
 │   │   ├── my-bookings/        # User bookings page
