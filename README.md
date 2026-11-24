@@ -13,6 +13,7 @@ This repository contains the Next.js frontend client, which connects to the Stud
 - **My Bookings**: View, manage, and cancel active reservations.
 - **My Listings**: Manage rooms created by the logged-in user.
 - **Responsive Interface**: Mobile-friendly design built with Tailwind CSS and Framer Motion animations.
+- **Custom 404 Page**: Friendly fallback route for unmatched URLs.
 
 ## Tech Stack
 
