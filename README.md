@@ -18,7 +18,7 @@ This repository contains the Next.js frontend client, which connects to the Stud
 ## Tech Stack
 
 - **Framework**: Next.js 16.2 (App Router)
-- **UI & Styling**: React 19, Tailwind CSS v4, Lucide React
+- **UI & Styling**: React 19, Tailwind CSS v4, Geist Fonts, Lucide React
 - **Animations**: Framer Motion
 - **Authentication**: Better Auth
 - **Database**: MongoDB
