@@ -43,6 +43,8 @@ StudyNook-Client/
 │   │   ├── contact/            # Contact page
 │   │   └── not-found.js        # Custom 404 page
 │   ├── components/             # Reusable UI components
+│   │   ├── Navbar.js           # Top navigation bar
+│   │   ├── Footer.js           # Site footer
 │   ├── context/                # Context providers
 │   └── lib/                    # API client and auth helper functions
 ├── .env.local                  # Environment variables
