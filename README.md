@@ -33,7 +33,7 @@ StudyNook-Client/
 │   │   ├── page.js             # Home page
 │   │   ├── layout.js           # Root layout
 │   │   ├── globals.css         # Global Tailwind styles
-│   │   ├── rooms/              # Room browsing and details
+│   │   ├── rooms/              # Room browsing and [id] detail pages
 │   │   ├── add-room/           # Add room page
 │   │   ├── my-bookings/        # User bookings page
 │   │   ├── my-listings/        # User listings page
