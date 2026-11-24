@@ -49,6 +49,7 @@ StudyNook-Client/
 │   │   ├── RoomCard.js         # Study room preview card
 │   │   └── Spinner.js          # Loading indicator
 │   ├── context/                # Context providers
+│   │   └── AuthContext.js      # Authentication state provider
 │   └── lib/                    # API client and auth helper functions
 ├── .env.local                  # Environment variables
 ├── next.config.mjs             # Next.js configuration
