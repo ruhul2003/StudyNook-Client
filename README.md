@@ -41,7 +41,7 @@ StudyNook-Client/
 │   │   ├── register/           # Register page
 │   │   ├── about/              # About page
 │   │   ├── contact/            # Contact page
-│   │   └── api/                # Better Auth API routes
+│   │   └── not-found.js        # Custom 404 page
 │   ├── components/             # Reusable UI components
 │   ├── context/                # Context providers
 │   └── lib/                    # API client and auth helper functions
