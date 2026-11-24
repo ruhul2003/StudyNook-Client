@@ -104,6 +104,7 @@ StudyNook-Client/
 
 | Variable | Description |
 | --- | --- |
+| `NEXT_PUBLIC_API_URL` | Base URL for the StudyNook backend API |
 | `NEXT_PUBLIC_GOOGLE_CLIENT_ID` | Google OAuth Client ID |
 | `BETTER_AUTH_SECRET` | Secret key for Better Auth tokens |
 | `BETTER_AUTH_URL` | Base URL of the app |
