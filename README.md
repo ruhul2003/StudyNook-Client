@@ -110,6 +110,14 @@ StudyNook-Client/
 | `BETTER_AUTH_URL` | Base URL of the app |
 | `MONGODB_URI` | MongoDB connection string |
 
+## Routes
+
+### Public Routes
+- `/` — Home page
+- `/rooms` — Browse and filter available study rooms
+- `/about` — Project overview
+- `/contact` — Contact information
+
 ## Available Scripts
 
 - `npm run dev`: Starts the local development server.
