@@ -73,7 +73,7 @@ StudyNook-Client/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/StudyNook-Client.git
+   git clone https://github.com/ruhul2003/StudyNook-Client.git
    cd StudyNook-Client
    ```
 
