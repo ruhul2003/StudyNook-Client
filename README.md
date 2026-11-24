@@ -1,4 +1,4 @@
-# StudyNook
+# StudyNook Client
 
 A modern study room booking platform that allows users to browse, reserve, and list private study spaces in their library.
 
