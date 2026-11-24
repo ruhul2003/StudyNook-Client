@@ -117,6 +117,9 @@ StudyNook-Client/
 - `/rooms` — Browse and filter available study rooms
 - `/about` — Project overview
 - `/contact` — Contact information
+- `/rooms/[id]` — Study room details and booking
+- `/login` — Sign in page
+- `/register` — Create a new account
 
 ## Available Scripts
 
